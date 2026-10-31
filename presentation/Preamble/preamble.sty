@@ -1,0 +1,76 @@
+\ProvidesPackage{Preamble/preamble}
+
+% --- 1. CORE BEAMER & THEME ---
+\usetheme{metropolis} 
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamercolor{background canvas}{bg=white}
+
+
+\usepackage{colortbl}
+% --- Gói hỗ trợ vẽ hình TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, calc} % Tải các thư viện phụ trợ cần thiết
+% --- 2. NGÔN NGỮ & FONT ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[main=vietnamese,english]{babel}
+\usepackage{microtype}
+\usepackage[most]{tcolorbox} % Thư viện để vẽ hộp Title
+% --- TÙY BIẾN FOOTER (CHÂN TRANG) ---
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[sep=3pt, wd=\paperwidth, leftskip=0.5cm, rightskip=0.5cm]{palette primary}
+    \hspace{0.1cm}
+    \scriptsize \insertsection \hfill 
+    \insertframenumber{} / \inserttotalframenumber 
+    \hspace{0.1cm}
+  \end{beamercolorbox}
+  \vskip2pt 
+}
+
+% --- PHẦN NÂNG CẤP: TỰ ĐỘNG HIỆN SLIDE TIÊU ĐỀ KHI ĐỔI SECTION ---
+\AtBeginSection[]{
+  \begin{frame}[plain]
+    \centering
+    \begin{tikzpicture}
+        % Dùng màu BrandPrimary đã định nghĩa bên branding.tex
+        \node[fill=BrandPrimary, text=white, rounded corners, inner sep=15pt, align=center, text width=0.8\paperwidth] at (0,0) {\Huge \bfseries \insertsection};
+    \end{tikzpicture}
+  \end{frame}
+}
+
+% --- 3. TOÁN HỌC & BẢNG BIỂU ---
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage{numprint}
+\npthousandsep{\,}
+\usepackage{booktabs, multirow, multicol, array}
+
+% --- 4. ĐỒ HỌA & HÌNH ẢNH ---
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float, wrapfig, caption}
+\usepackage{tikz}
+\usetikzlibrary{calc, shapes, arrows.meta}
+
+% --- 5. CODE LISTINGS ---
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\tiny, 
+    breaklines=true,
+    captionpos=b,                    
+    keepspaces=true,                 
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}

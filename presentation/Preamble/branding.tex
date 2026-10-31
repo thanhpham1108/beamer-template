@@ -1,0 +1,20 @@
+% --- ĐỊNH NGHĨA MÀU SẮC THƯƠNG HIỆU ---
+% Bạn chỉ cần sửa 2 mã màu này là toàn bộ Slide đổi diện mạo
+\definecolor{BrandPrimary}{RGB}{36, 164, 220}   % Mặc định là blued của Thành
+\definecolor{BrandAccent}{RGB}{201, 42, 135}    % Mặc định là jspink của Thành
+\definecolor{MyDarkBlue}{RGB}{0, 33, 71} % Màu xanh đậm chuyên nghiệp
+
+% Áp dụng màu vào Beamer
+\setbeamercolor{palette primary}{bg=BrandPrimary, fg=white}
+\setbeamercolor{structure}{fg=BrandPrimary}
+\setbeamercolor{titlelike}{fg=BrandPrimary}
+\setbeamercolor{frametitle}{bg=BrandPrimary, fg=white}
+
+% --- CẤU HÌNH LOGO TỰ ĐỘNG ---
+% Tự động chèn Logo vào góc trên bên phải mọi slide (trừ trang bìa)
+\addtobeamertemplate{frametitle}{}{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=north east, yshift=-1pt, xshift=-1pt] at (current page.north east) 
+        {\includegraphics[height=0.6cm]{Assets/logo.png}}; % Thành nhớ bỏ file logo vào folder Assets nhé
+    \end{tikzpicture}
+}

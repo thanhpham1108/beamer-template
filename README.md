@@ -1,183 +1,149 @@
-# LaTeX Beamer Template — HCMUT
+# Beamer Template
 
-A reusable 16:9 Beamer deck built on the **metropolis** theme: one brand palette
-drives the whole presentation, the title slide is generated from six metadata
-lines, and a component library holds every slide pattern you are likely to need.
+A ready-to-use presentation template: 16:9 slides, HCMUT colours, a title slide
+that fills itself in from six lines of text. Nothing to install — you edit the
+text, upload the folder to Overleaf, and present.
 
-<img src="assets/title-slide.png" alt="Title slide" width="620">
+---
 
-<table>
-<tr>
-<td><img src="assets/bullets.png" alt="Nested bullet slide" width="360"></td>
-<td><img src="assets/columns.png" alt="Text and image side by side" width="360"></td>
-</tr>
-</table>
+## Use it in 4 steps
 
-## Features
+### 1. Download this project
 
-- **One palette, whole deck** — title card, section dividers, frame titles,
-  footer and links all follow four lines in `Preamble/branding.tex`.
-- **Metadata-driven title slide** — `\title`, `\subtitle`, `\author`,
-  `\institute`, `\courseline`, `\date`; leave a field empty to hide it.
-- **Automatic agenda and section dividers** — each section file declares
-  `\section[short]{long}`, and the agenda plus divider slides follow.
-- **Footer that tells the audience where they are** — current section on the
-  left, `slide / total` on the right.
-- **Component cookbook** — columns, figures, tables, callouts, TikZ diagrams,
-  code listings, blocks, a statement slide, a quote and a closing slide, ready
-  to copy into `Sections/`.
-- **Rebrand in two edits** — swap `Assets/logo.png`, change the RGB values.
+On this page click the green **Code** button → **Download ZIP**, then unzip it
+somewhere easy to find (for example your Desktop).
 
-## Structure
+The presentation itself is inside the **`deck`** folder. That is the only folder
+that matters.
 
-Git history and the LaTeX sources are kept apart: `.git` stays on your machine,
-`deck/` is what Overleaf gets.
+### 2. Fill in the title slide
 
-```
-beamer-template/
-├── .git/                 history only — never uploaded
-├── deck.zip              generated, ready to upload (not tracked)
-├── assets/               preview images for this README
-├── README.md
-└── deck/                 ← THE LATEX PROJECT
-    ├── main.tex          metadata + document order
-    ├── COMPONENTS.tex    slide library, not part of the deck
-    ├── Preamble/
-    │   ├── preamble.sty  theme, packages, footer, section dividers
-    │   ├── branding.tex  colours + logo path
-    │   └── titlepage.tex title slide, built from the metadata
-    ├── Sections/
-    │   ├── 00-agenda.tex
-    │   ├── 01-section.tex   demo section, replace it
-    │   └── 99-thankyou.tex
-    └── Assets/logo.png
-```
-
-## Quick start
-
-1. Copy `deck/` and rename it after the project.
-2. Fill in the metadata block at the top of `main.tex`:
+Open **`deck/main.tex`** in any text editor (Notepad, VS Code, or directly in
+Overleaf later). The first block looks like this — replace the text between the
+braces with yours:
 
 ```latex
 \title{Presentation Title}
-\subtitle{Optional subtitle}                        % {} hides the line
+\subtitle{Optional subtitle}
 \author{Your Name}
 \institute{University -- Faculty}
-\renewcommand{\courseline}{Course code -- Group X}  % {} hides the line
-\date{\today}                                       % or {May 1, 2026}
+\renewcommand{\courseline}{Course code -- Group X}
+\date{\today}
 ```
 
-3. Write content in `Sections/` and delete the demo frames from
-   `01-section.tex`.
+Leave a line empty (`{}`) and it simply disappears. `\date{\today}` prints
+today's date; write `\date{May 1, 2026}` to fix a date.
 
-## Writing a section
+### 3. Write your slides
 
-Create `Sections/02-my-topic.tex`:
+Every file in **`deck/Sections/`** is one part of the talk. `01-section.tex`
+holds the demo slides — replace them with your own.
+
+To add a new part of the talk, create a file such as `deck/Sections/02-results.tex`:
 
 ```latex
-\section[Short title]{Long section title}
+\section[Results]{Results and discussion}
 
-\begin{frame}{Slide title}
+\begin{frame}{What we measured}
     \begin{itemize}
-        \item Point
+        \item First point
+        \item Second point
         \begin{itemize}
-            \item Detail
+            \item A detail under it
         \end{itemize}
     \end{itemize}
 \end{frame}
 ```
 
-and add one line in `main.tex`:
+and add one line near the end of `main.tex`:
 
 ```latex
-\input{Sections/02-my-topic}
+\input{Sections/02-results}
 ```
 
-The `[Short title]` is what the agenda, the section divider and the footer show,
-so keep it under ~40 characters. Do not put `\\` inside a section title.
+That is all. The agenda slide, the section divider and the footer update
+by themselves, because they read the `\section[...]{...}` line.
 
-## Branding
+> The text in `[...]` is what shows in the agenda and the footer — keep it
+> short. Do not put `\\` inside a section title.
 
-Everything visual comes from four lines in `Preamble/branding.tex`:
+### 4. Zip it and upload it
+
+1. Open the **`deck`** folder.
+2. Select everything **inside** it (Ctrl + A).
+3. Right-click → **Send to → Compressed (zipped) folder**
+   (Windows 11: **Compress to ZIP file**).
+4. Go to [overleaf.com](https://www.overleaf.com) → **New Project** →
+   **Upload Project** → choose that zip.
+5. Press **Recompile**. Done.
+
+> **Check the zip before uploading:** double-click it. You should see
+> `main.tex` immediately. If you only see a single `deck` folder, you zipped the
+> folder instead of its contents — go back, open `deck`, and zip what is inside.
+
+The compiler stays on **pdfLaTeX** and `main.tex` is already the main document,
+so there is nothing to configure.
+
+---
+
+## What to change, and what to leave alone
+
+| What you want to change | File |
+|---|---|
+| Title, subtitle, your name, university, course, date | `deck/main.tex` (top block) |
+| Slides, text, sections | `deck/Sections/` |
+| Colours and logo | `deck/Preamble/branding.tex` + `deck/Assets/logo.png` |
+| Images used in slides | put them in `deck/Assets/` |
+| Everything else (theme, fonts, footer) | `deck/Preamble/` — you can ignore it |
+
+## Colours and logo
+
+Open **`deck/Preamble/branding.tex`**. Four lines control the whole look:
 
 ```latex
 \definecolor{BrandPrimary}{RGB}{36, 164, 220}
 \definecolor{BrandAccent}{RGB}{201, 42, 135}
 \definecolor{BrandDark}{RGB}{0, 33, 71}
-\newcommand{\brandlogo}{Assets/logo.png}   % {} hides the logo
+\newcommand{\brandlogo}{Assets/logo.png}
 ```
 
-Replace `Assets/logo.png` with another organisation's logo and change the RGB
-values — nothing else refers to the old brand.
+Change the numbers, or drop your own picture into `deck/Assets/` as `logo.png`.
+Set `\newcommand{\brandlogo}{}` to remove the logo.
 
-## Writing
+## Adding images to a slide
 
-| Need | How |
-|---|---|
-| Image | `\includegraphics[width=0.7\linewidth]{Assets/diagram.png}` — case-sensitive, no spaces |
-| Two columns | see `docs/columns.png`: two `columns` environments with `0.45`/`0.5` widths |
-| Code | `lstlisting` with a language, styled once in `preamble.sty` |
-| Emphasis | `\alert{...}` for the accent colour, `\textbf{...}` for weight |
-| Reference | `\cite{key}` with `refs.bib` if you add a bibliography block |
-
-Prefer the global list spacing over `\vspace{-1.5cm}` hacks.
-
-## Build on Overleaf
-
-1. Upload `deck.zip` — **New Project → Upload Project**.
-2. Compiler **pdfLaTeX**, main document `main.tex` (it is at the project root).
-3. Compile. The metropolis theme ships with TeX Live, so nothing to install.
-
-Regenerate the zip after committing changes:
-
-```bash
-git archive --format=zip -o deck.zip HEAD:deck
-```
-
-Prefer that over Windows' `Compress-Archive`: it writes backslash separators
-that Overleaf's unzip treats as literal filenames.
-
-## Component cookbook
-
-`deck/COMPONENTS.tex` is a scratch document showing every slide pattern that
-ships with the template. Set it as the main document in Overleaf, compile, copy
-the frames you want into `Sections/`, then switch the main document back to
-`main.tex`. It is never part of your deck.
-
-## Vietnamese text
-
-Babel loads English as the main language with Vietnamese available. Occasional
-Vietnamese words work with pdfLaTeX. For a mostly Vietnamese deck, switch to
-**XeLaTeX** and in `Preamble/preamble.sty` replace:
+Put the file in `deck/Assets/` and use its exact name:
 
 ```latex
-% remove
-% \usepackage[utf8]{inputenc}
-% \usepackage[T1]{fontenc}
-
-% add
-\usepackage{fontspec}
+\includegraphics[width=0.7\linewidth]{Assets/diagram.png}
 ```
 
-## The original deck
+Names are **case-sensitive** on Overleaf: `logo.png` and `Logo.png` are different
+files. Use lowercase, no spaces.
 
-The template was cleaned from a 91-slide database-security presentation. Git
-history keeps it intact:
+## Need a slide pattern?
 
-```bash
-git log --oneline
-git show 0d1b914 --stat
-git archive 0d1b914 -o original-deck.zip
-```
+`deck/COMPONENTS.tex` is a collection of ready-made slides: two columns, a big
+figure, a table, callout boxes, a flow diagram, code, blocks, a quote, a closing
+slide. Open it on Overleaf (set it as the main document) to see them, then copy
+the frames you want into `Sections/`.
 
-## Requirements
+## If something goes wrong
 
-TeX Live 2022 or newer (Overleaf is fine). The deck needs `beamertheme-metropolis`,
-`booktabs`, `tcolorbox`, `listings`, `tikz`, `multirow`, `multicol` and
-`colortbl`, all in a standard full install.
+- **`File not found` for an image** — the filename in the zip differs in case or
+  spelling from what you typed.
+- **The zip opens into a folder instead of `main.tex`** — see the check in step 4.
+- **Vietnamese letters look wrong** — switch the Overleaf compiler to
+  **XeLaTeX** (Menu → Compiler) and follow the note at the top of
+  `Preamble/preamble.sty`.
+- **Text spills off a slide** — split it into two slides instead of shrinking
+  the font.
 
-## Conventions
+## For reference
 
-- One idea per slide; split the slide instead of shrinking the font.
-- Let the theme draw section dividers — never hand-make them.
-- Put figures in `Assets/`, sections in `Sections/`, nothing else at the root.
+This template came from a 91-slide database-security presentation; the untouched
+original is kept in the git history (`git show 0d1b914 --stat`) in case you ever
+want to compare.
+
+Slides read best with one idea per frame, and section dividers left to the theme
+rather than made by hand.

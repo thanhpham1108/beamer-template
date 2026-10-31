@@ -1,0 +1,28 @@
+% =============================================================================
+%  BRANDING  --  edit the four lines below and the whole deck follows.
+% =============================================================================
+\definecolor{BrandPrimary}{RGB}{36, 164, 220}   % main colour (bars, section dividers)
+\definecolor{BrandAccent}{RGB}{201, 42, 135}    % accent (alerts, highlights)
+\definecolor{BrandDark}{RGB}{0, 33, 71}         % dark text / contrast
+\newcommand{\brandlogo}{Assets/logo.png}        % empty {} to hide the logo
+% =============================================================================
+
+% --- Beamer colours ---------------------------------------------------------
+\setbeamercolor{palette primary}{bg=BrandPrimary, fg=white}
+\setbeamercolor{structure}{fg=BrandPrimary}
+\setbeamercolor{titlelike}{fg=BrandPrimary}
+\setbeamercolor{frametitle}{bg=BrandPrimary, fg=white}
+\setbeamercolor{alerted text}{fg=BrandAccent}
+\setbeamercolor{block title}{bg=BrandPrimary!15, fg=BrandDark}
+\setbeamercolor{block body}{bg=BrandPrimary!5}
+
+% --- Links ------------------------------------------------------------------
+% Deferred to \begin{document} so hyperref is guaranteed to be loaded already.
+\AtBeginDocument{%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=BrandPrimary,
+    urlcolor=BrandPrimary,
+    citecolor=BrandPrimary
+  }%
+}

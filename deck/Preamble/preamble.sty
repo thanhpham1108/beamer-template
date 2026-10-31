@@ -1,0 +1,124 @@
+\ProvidesPackage{Preamble/preamble}
+
+% =============================================================================
+%  1. THEME
+% =============================================================================
+\usetheme{metropolis}                     % requires the metropolis theme package
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{navigation symbols}{}
+
+% =============================================================================
+%  2. LANGUAGE
+%     English is the main language; Vietnamese is available for notes/quotes.
+%     For a mostly-Vietnamese deck, see README ("Vietnamese text").
+% =============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[main=english,vietnamese]{babel}
+\usepackage{microtype}
+
+% =============================================================================
+%  3. MATH
+% =============================================================================
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% =============================================================================
+%  4. TABLES
+% =============================================================================
+\usepackage{booktabs, multirow, multicol, array, colortbl}
+
+% =============================================================================
+%  5. GRAPHICS AND DRAWING
+% =============================================================================
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, calc, shapes.geometric}
+\usepackage[most]{tcolorbox}
+
+% =============================================================================
+%  6. CODE LISTINGS
+% =============================================================================
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% =============================================================================
+%  7. LIST SPACING
+%     One global setting instead of \vspace hacks on every slide.
+% =============================================================================
+\setbeamertemplate{itemize subitem}{\scriptsize$\circ$}
+\setbeamertemplate{itemize subsubitem}{\tiny$\bullet$}
+\addtobeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.45em}}
+\addtobeamertemplate{itemize/enumerate subbody begin}{\setlength{\itemsep}{0.2em}}
+
+% =============================================================================
+%  7b. METADATA HOOKS
+%      Empty by default so the title slide can test for them safely.
+% =============================================================================
+\providecommand{\courseline}{}
+\providecommand{\insertsubtitle}{}
+
+% =============================================================================
+%  8. FOOTER  --  short section name on the left, page counter on the right
+% =============================================================================
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[sep=3pt, wd=\paperwidth, leftskip=0.5cm, rightskip=0.5cm]{palette primary}
+    \hspace{0.1cm}%
+    \scriptsize \insertsectionhead \hfill
+    \insertframenumber{} / \inserttotalframenumber
+    \hspace{0.1cm}%
+  \end{beamercolorbox}%
+  \vskip2pt
+}
+
+% =============================================================================
+%  9. AUTOMATIC SECTION DIVIDER SLIDE
+%     Uses the short section title: \section[Short]{Long title}
+% =============================================================================
+\AtBeginSection[]{%
+  \begin{frame}[plain]
+    \centering
+    \begin{tikzpicture}
+      \node[fill=BrandPrimary, text=white, rounded corners, inner sep=15pt,
+            align=center, text width=0.8\paperwidth]
+        at (0,0) {\Huge\bfseries \insertsectionhead};
+    \end{tikzpicture}
+  \end{frame}
+}
+
+% =============================================================================
+%  10. LOGO IN THE FRAME TITLE BAR
+%      Drawn only if the file in \brandlogo exists, so the template still
+%      compiles when the logo is removed.
+% =============================================================================
+\addtobeamertemplate{frametitle}{}{%
+  \ifx\brandlogo\empty\else
+    \IfFileExists{\brandlogo}{%
+      \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north east, yshift=-1pt, xshift=-1pt]
+          at (current page.north east) {\includegraphics[height=0.55cm]{\brandlogo}};
+      \end{tikzpicture}%
+    }{}%
+  \fi
+}

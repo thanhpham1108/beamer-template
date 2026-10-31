@@ -1,0 +1,62 @@
+% =============================================================================
+%  SECTION 01 -- DEMO
+%  Replace the frames below with your own content, or delete this file and
+%  point main.tex at a new one. The section divider slide is generated
+%  automatically from \section[short]{long}.
+% =============================================================================
+\section[Demo Section]{Demo Section}
+
+\begin{frame}{A slide with nested bullets}
+    \begin{itemize}
+        \item A first-level point
+        \begin{itemize}
+            \item A supporting detail
+            \item Another detail with \alert{highlighted text}
+        \end{itemize}
+
+        \item A second first-level point
+        \begin{itemize}
+            \item \textbf{Bold lead-in:} the explanation of the idea.
+            \item Inline code looks like \texttt{this}.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Text and image side by side}
+    \begin{columns}[T, onlytextwidth]
+        \begin{column}{0.52\textwidth}
+            \begin{itemize}
+                \item Put prose on one side
+                \item Put a figure, diagram or table on the other
+                \item Change the two widths to rebalance the slide
+            \end{itemize}
+        \end{column}
+
+        \begin{column}{0.44\textwidth}
+            \centering
+            % Replace the placeholder with a real image:
+            %   \includegraphics[width=\linewidth]{Assets/your-image.png}
+            \begin{tikzpicture}
+                \node[draw=BrandPrimary, fill=BrandPrimary!10, rounded corners,
+                      minimum width=4cm, minimum height=3.2cm, align=center,
+                      text=BrandPrimary]
+                    {Placeholder\\image area};
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Callout box}
+    \begin{itemize}
+        \item A normal bullet for context
+        \item Choose boxes over bold paragraphs when one message matters most
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \begin{tcolorbox}[colback=BrandPrimary!8, colframe=BrandPrimary,
+                      boxrule=0.6pt, arc=3pt, left=6pt, right=6pt]
+        \textbf{Key idea.} Definitions, warnings and single takeaways belong in
+        a box like this one so the audience can find them at a glance.
+    \end{tcolorbox}
+\end{frame}

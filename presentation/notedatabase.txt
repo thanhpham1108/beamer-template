@@ -1,5 +1,0 @@
-Attribute based
-ABAC
-bỏ các encryption
-giữ digital signature, 
-PKI

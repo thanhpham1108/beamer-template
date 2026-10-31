@@ -1,0 +1,46 @@
+% =============================================================================
+%  BEAMER TEMPLATE
+%  ---------------------------------------------------------------------------
+%  This is the only file you normally need to touch to start a new deck.
+%  Fill in the metadata block, then write your content in Sections/.
+% =============================================================================
+\documentclass[10pt, aspectratio=169]{beamer}
+
+\usepackage{Preamble/preamble}
+\input{Preamble/branding.tex}
+
+% -----------------------------------------------------------------------------
+%  1. DECK METADATA  --  change these five lines
+% -----------------------------------------------------------------------------
+\title{Presentation Title}
+\subtitle{Optional subtitle}                   % leave {} to hide
+\author{Your Name}
+\institute{University -- Faculty}
+\renewcommand{\courseline}{Course code -- Group X}  % leave {} to hide
+\date{\today}                                 % or e.g. {May 1, 2026}
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+%  2. TITLE SLIDE  (rendered from the metadata above)
+% -----------------------------------------------------------------------------
+\input{Preamble/titlepage}
+
+% -----------------------------------------------------------------------------
+%  3. AGENDA
+% -----------------------------------------------------------------------------
+\input{Sections/00-agenda}
+
+% -----------------------------------------------------------------------------
+%  4. CONTENT
+%     Each section file declares its own \section at the top, so the section
+%     divider slide and the agenda update automatically.
+% -----------------------------------------------------------------------------
+\input{Sections/01-section}
+
+% -----------------------------------------------------------------------------
+%  5. CLOSING  --  delete the next line to end without a thank-you slide
+% -----------------------------------------------------------------------------
+\input{Sections/99-thankyou}
+
+\end{document}

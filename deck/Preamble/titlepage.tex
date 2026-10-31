@@ -1,10 +1,11 @@
 % =============================================================================
 %  TITLE SLIDE
 %  Everything here comes from main.tex; no text is hard-coded.
+%  Sizes are tuned so the whole stack (title card + metadata + logo) fits on
+%  a 16:9 slide without pushing the logo off the bottom edge.
 % =============================================================================
 \begin{frame}[plain]
     \centering
-    \vspace*{0.2cm}
 
     % --- Title card ---------------------------------------------------------
     \begin{tcolorbox}[
@@ -18,30 +19,30 @@
         shadow={2pt}{-2pt}{0pt}{black!30},
         halign=flush right,
         valign=center,
-        height=3.8cm,
+        height=2.6cm,
         right=0.8cm,
         after skip=0pt
     ]
         {\fontsize{24}{28}\selectfont\bfseries\color{white}%
          \inserttitle
          \ifx\insertsubtitle\empty\else
-             \\[0.12cm]{\fontsize{15}{19}\selectfont\normalfont\insertsubtitle}%
+             \\[0.1cm]{\fontsize{14}{17}\selectfont\normalfont\insertsubtitle}%
          \fi
          \par}
     \end{tcolorbox}
 
-    \vspace{1cm}
+    \vspace{0.45cm}
 
     % --- Course / group line (optional) ------------------------------------
     \ifx\courseline\empty\else
-        {\Large\bfseries\color{BrandPrimary} \courseline}\\[0.3cm]
+        {\Large\bfseries\color{BrandPrimary} \courseline}\\[0.18cm]
     \fi
 
     % --- Author and institute ----------------------------------------------
-    {\large \insertauthor} \\[0.25cm]
+    {\large \insertauthor} \\[0.1cm]
     {\normalsize \insertinstitute}
 
-    \vspace{0.5cm}
+    \vspace{0.25cm}
 
     % --- Date ---------------------------------------------------------------
     {\small \insertdate}
@@ -50,7 +51,7 @@
 
     % --- Logo (only if the file exists) ------------------------------------
     \IfFileExists{\brandlogo}{%
-        \includegraphics[height=1.5cm, keepaspectratio]{\brandlogo}%
+        \includegraphics[height=1cm, keepaspectratio]{\brandlogo}%
     }{}
-    \vspace{1cm}
+    \vspace{0.25cm}
 \end{frame}

@@ -66,11 +66,13 @@
 % =============================================================================
 %  7. LIST SPACING
 %     One global setting instead of \vspace hacks on every slide.
+%     Note: these templates are set (not "added to") because the built-in
+%     defaults are empty.
 % =============================================================================
 \setbeamertemplate{itemize subitem}{\scriptsize$\circ$}
 \setbeamertemplate{itemize subsubitem}{\tiny$\bullet$}
-\addtobeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.45em}}
-\addtobeamertemplate{itemize/enumerate subbody begin}{\setlength{\itemsep}{0.2em}}
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\itemsep}{0.45em}}
+\setbeamertemplate{itemize/enumerate subbody begin}{\setlength{\itemsep}{0.2em}}
 
 % =============================================================================
 %  7b. METADATA HOOKS

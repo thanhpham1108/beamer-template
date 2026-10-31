@@ -4,12 +4,12 @@ A reusable 16:9 Beamer deck built on the **metropolis** theme: one brand palette
 drives the whole presentation, the title slide is generated from six metadata
 lines, and a component library holds every slide pattern you are likely to need.
 
-<img src="docs/title-slide.png" alt="Title slide" width="620">
+<img src="assets/title-slide.png" alt="Title slide" width="620">
 
 <table>
 <tr>
-<td><img src="docs/bullets.png" alt="Nested bullet slide" width="360"></td>
-<td><img src="docs/columns.png" alt="Text and image side by side" width="360"></td>
+<td><img src="assets/bullets.png" alt="Nested bullet slide" width="360"></td>
+<td><img src="assets/columns.png" alt="Text and image side by side" width="360"></td>
 </tr>
 </table>
 
@@ -37,7 +37,7 @@ Git history and the LaTeX sources are kept apart: `.git` stays on your machine,
 beamer-template/
 ├── .git/                 history only — never uploaded
 ├── deck.zip              generated, ready to upload (not tracked)
-├── docs/                 preview images for this README
+├── assets/               preview images for this README
 ├── README.md
 └── deck/                 ← THE LATEX PROJECT
     ├── main.tex          metadata + document order

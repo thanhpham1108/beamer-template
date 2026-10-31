@@ -142,8 +142,7 @@ the frames you want into `Sections/`.
 ## For reference
 
 This template came from a 91-slide database-security presentation; the untouched
-original is kept in the git history (`git show 0d1b914 --stat`) in case you ever
-want to compare.
+original is kept in the repository history, in case you ever want to compare.
 
 Slides read best with one idea per frame, and section dividers left to the theme
 rather than made by hand.
